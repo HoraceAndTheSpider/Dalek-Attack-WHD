@@ -1,0 +1,6 @@
+bank,player_choice,likely_identity,disk1_ice_offset,packed_size,unpacked_size,width,height,frames,bytes_per_frame
+1,P1_0,Patrick Troughton - Second Doctor,0x090E5C,15859,28800,32,40,45,640
+2,P1_1,Tom Baker - Fourth Doctor,0x094C50,15475,28800,32,40,45,640
+3,P1_2,Sylvester McCoy - Seventh Doctor,0x0988C4,13875,28800,32,40,45,640
+4,P2_0,Ace,0x09BEF8,12944,28800,32,40,45,640
+5,P2_1,UNIT soldier,0x09F188,15493,28800,32,40,45,640

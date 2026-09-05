@@ -1,0 +1,184 @@
+		INCDIR	"Include:"
+		INCLUDE	whdload.i
+
+_base		SLAVE_HEADER			;ws_Security + ws_ID
+		dc.w	13			;ws_Version
+		dc.w	WHDLF_NoError|WHDLF_EmulTrap|WHDLF_ClearMem|WHDLF_NoDivZero
+		dc.l	$100000			;ws_BaseMemSize
+		dc.l	0			;ws_ExecInstall
+		dc.w	_Start-_base		;ws_GameLoader
+		dc.w	0			;ws_CurrentDir
+		dc.w	0			;ws_DontCache
+_keydebug	dc.b	0			;ws_keydebug
+_keyexit	dc.b	$59			;ws_keyexit = F10
+_expmem		dc.l	0			;ws_ExpMem
+		dc.w	_name-_base		;ws_name
+		dc.w	_copy-_base		;ws_copy
+		dc.w	_info-_base		;ws_info
+
+_name		dc.b	"Dalek Attack",0
+_copy		dc.b	"1992 Alternative",0
+_info		dc.b	"installed & fixed by Bored Seal",10
+		dc.b	"V1.2 (24-Jul-2009)",0
+		even
+
+_Start		lea	(_resload,pc),a1
+		move.l	a0,(a1)
+		move.l	a0,a2
+                lea     (_tags,pc),a0
+                jsr     (resload_Control,a2)
+
+		moveq	#8,d1
+		move.l	#$b8,d2
+		lea	$800,a0
+		bsr	LoadRNCTracks
+
+		move.w	#$4ef9,$3142
+		pea	LoadRNCTracks
+		move.l	(sp)+,$3144
+
+		move.l	#$24094e71,$41b6	;force $100000 memory
+
+		move.l	#$2b90,$78		;fix autovector event
+
+		pea	PatchMenu
+		move.l	(sp)+,$ca2
+
+		jmp	(a0)
+
+PatchMenu	move.w	#$4ef9,$78162
+		pea	LoadRNCTracks
+		move.l	(sp)+,$78164
+
+		move.w	#$4ef9,$7fa
+		pea	PatchGame
+		move.l	(sp)+,$7fc
+		move.w	#$7fa,$78040
+
+		jmp	$78000
+
+PatchGame	movem.l	a0-a2/d0-d2,-(sp)
+		lea	trainer,a0
+		tst.l	(a0)
+		beq	NoTrainer
+
+		move.w	#$6004,$6194		;unlimited lives
+;		move.w	#$6002,$e61a		;unlimited continues
+
+;$96384 = number of hostages to rescue
+;$91cf4 = grenades
+
+NoTrainer	lea	_gamepatch,a0
+		suba.l	a1,a1
+		move.l	_resload,a2
+		jsr	resload_Patch(a2)
+		movem.l	(sp)+,a0-a2/d0-d2
+
+		bsr	LoadHi
+		jmp	$800
+
+_gamepatch	PL_START
+		PL_P	$112f2,LoadRNCTracks	;disk loader emulators
+		PL_P	$dc00,InsertDisk1
+		PL_P	$dc5e,InsertDisk2
+		PL_PS	$106a4,SaveHi_Sub	;save highscore routine
+		PL_R	$fc3a			;remove manual protection
+		PL_L	$11274,$24094e71	;skip memory test => use 1MB ChipRAM
+
+		PL_PS	$5738,AccessFault1	;test a4 for minus value to avoid access fault
+		PL_PS	$a07c,AccessFault2	;correct 24bit access fault
+		PL_PS	$a0d4,AccessFault2
+		PL_W	$1036,$4e71		;correct 24bit access fault
+		PL_PS	$1038,AccessFault3
+		PL_END
+
+AccessFault1	add.w	d4,d4
+		move.l	d0,-(sp)
+		move.l	a4,d0
+		tst.l	d0
+		bmi	error
+		move.l	(sp)+,d0
+		move.b	(a4,d4.w),d5
+		rts
+
+error		moveq	#0,d0
+		lea	8(sp),sp
+		rts
+
+AccessFault2	move.l	d0,-(sp)
+		move.l	a1,d0
+		and.l	#$000fffff,d0
+		move.l	d0,a1
+		move.l	(sp)+,d0
+		btst	#6,(a1)
+		bne	error2
+		rts
+
+error2		sf	(a0)
+		rts
+
+AccessFault3	move.l	d0,-(sp)
+		movea.l	$10(a5),a1
+		adda.l	8(a0),a1
+		move.l	a1,d0
+		and.l	#$000fffff,d0
+		move.l	d0,a1
+		move.l	(sp)+,d0
+		rts
+
+InsertDisk1	move.l	a6,-(sp)
+		lea	disknum,a6
+		move.w	#1,(a6)
+		move.l	(sp)+,a6
+		rts
+
+InsertDisk2	move.l	a6,-(sp)
+		lea	disknum,a6
+		move.w	#2,(a6)
+		move.l	(sp)+,a6
+		rts
+
+LoadRNCTracks	movem.l a0-a2/d0-d3,-(sp)
+		mulu.w	#$200,d1
+		mulu.w	#$200,d2
+		move.l	d1,d0
+		move.l	d2,d1
+		lea	disknum,a2
+		move.w	(a2),d2
+		move.l	(_resload,pc),a2
+		jsr	(resload_DiskLoad,a2)
+		movem.l (sp)+,a0-a2/d0-d3
+		clr.l	d0
+		rts
+
+SaveHi_Sub	cmpi.w	#$14,$10c(a5)
+		beq	SaveHi
+		jmp	$10644
+
+LoadHi		movem.l	d0-d7/a0-a6,-(sp)
+		bsr	Params
+                jsr     (resload_GetFileSize,a2)
+                tst.l   d0
+                beq     NoHisc
+		bsr	Params
+		jsr	(resload_LoadFile,a2)
+NoHisc		movem.l	(sp)+,d0-d7/a0-a6
+		rts
+
+Params		lea	hiscore,a0
+		lea	$10916,a1
+		move.l	(_resload,pc),a2
+		rts
+
+SaveHi		movem.l	d0-d7/a0-a6,-(sp)
+		bsr	Params
+		move.l	#$1ee,d0
+		jsr	(resload_SaveFile,a2)
+		movem.l	(sp)+,d0-d7/a0-a6
+		rts
+
+_resload	dc.l	0
+disknum		dc.w	1
+_tags		dc.l	WHDLTAG_CUSTOM1_GET
+trainer		dc.l    0,0
+hiscore		dc.b	"DalekAttack.High",0

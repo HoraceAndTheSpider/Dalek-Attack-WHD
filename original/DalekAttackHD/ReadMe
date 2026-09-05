@@ -1,0 +1,30 @@
+Short : HD-Installer for Dalek Attack v1.2
+Type : game/patch
+Author :  Bored Seal
+
+This patch applies to "Dalek Attack" by Alternative (c) 1992 - 2 disks.
+Slave requires WHDLOAD V10+.
+Game requires 1MB ChipRAM (+ 1.6MB RAM for PreLoad)
+
+FEATURES:
+- Game loads entirely from HD
+- Manual protection removed
+- Access faults fixed (3x)
+- Highscores will be saved
+- Trainer option (set CUSTOM1=1 for Player1 unlimited lives)
+- NI/ROM icon (created by JHZ)
+- Quit option (your default key)
+
+HISTORY:
+V1.0 (19-Apr-2001) - first release
+V1.1 (14-Jul-2006) - expansion memory usage, taglist fixed to work with WHDLoad v16.6
+V1.2 (23-Jul-2009) - gfx sprite bugs fixed -> ChipRAM used instead expansion memory
+                   - another access fault fixed, "division by zero" errors removed
+
+KNOWN BUGS:
+- Game display is trashed sometimes at startup. Try to restart the game until it will work.
+- Snoop mode freezes your computer.
+- Game uses F10 for pause key, select different quitkey. :)
+
+         Bug report form, full WHDLoad package and other installs:
+                          http://www.whdload.de
