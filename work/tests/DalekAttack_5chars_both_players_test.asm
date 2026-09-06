@@ -13,6 +13,15 @@
 		INCLUDE	whdload.i
 		INCLUDE	whdmacros.i
 
+; ---------------------------------------------------------------------------
+; Character expansion test 1
+; ---------------------------------------------------------------------------
+CHARACTER_COUNT		EQU	5
+CHARACTER_TABLE_SLOTS	EQU	6
+ORIGINAL_CHAR_TABLE	EQU	$e528
+PORTRAIT_BASE_ALL	EQU	$1797a
+
+
 		IFD BARFLY
 		OUTPUT	DalekAttack.slave
 		BOPT	O+				;enable optimizing
@@ -25,7 +34,7 @@
 		ENDC
 
 _base		SLAVE_HEADER			;ws_Security + ws_ID
-		dc.w	15			;ws_Version
+		dc.w	17			;ws_Version
 		dc.w	WHDLF_NoError|WHDLF_EmulTrap|WHDLF_ClearMem|WHDLF_NoDivZero
 		dc.l	$100000			;ws_BaseMemSize
 		dc.l	0			;ws_ExecInstall
@@ -33,7 +42,7 @@ _base		SLAVE_HEADER			;ws_Security + ws_ID
 		dc.w	0			;ws_CurrentDir
 		dc.w	0			;ws_DontCache
 _keydebug	dc.b	0			;ws_keydebug
-_keyexit	dc.b	$59			;ws_keyexit = F10
+_keyexit	dc.b	$50			;ws_keyexit = F1
 _expmem		IFD	USE_FASTMEM	
 		dc.l	EXPMEMSIZE		;ws_ExpMem
 		ELSE
@@ -44,12 +53,21 @@ _expmem		IFD	USE_FASTMEM
 		dc.w	_copy-_base		;ws_copy
 		dc.w	_info-_base		;ws_info
 
+		dc.w	0			; ws_kickname
+		dc.l	0			; ws_kicksize
+		dc.w	0			; ws_kickcrc
+		dc.w	_config-_base		
+
+_config:	dc.b    "C1:X:Player 1 Infinite Lives:0;"	; ws_config;	
+		dc.b    0
+
+
 		IFD BARFLY
 		DOSCMD	"WDate  >T:date"
 		ENDC
 
 DECL_VERSION:MACRO
-			dc.b	"1.4 mod"
+			dc.b	"1.3 (Alpha)"
 		IFD BARFLY
 			dc.b	" "
 			INCBIN	"T:date"
@@ -112,7 +130,7 @@ PatchMenu	move.w	#$4ef9,$78162
 		jmp	$78000
 
 PatchGame	movem.l	a0-a2/d0-d2,-(sp)
-		lea	trainer,a0
+		lea	_custom1,a0
 		tst.l	(a0)
 		beq	NoTrainer
 
@@ -144,7 +162,68 @@ _gamepatch	PL_START
 		PL_PS	$a0d4,AccessFault2
 		PL_W	$1036,$4e71		;correct 24bit access fault
 		PL_PS	$1038,AccessFault3
+
+; Character expansion test 1: all five originals available to both players.
+		PL_P	$281e,SelectP1Character
+		PL_P	$2862,SelectP2Character
+		PL_W	$ebde,CHARACTER_COUNT	; P1 initial random divisor
+		PL_W	$eec6,CHARACTER_COUNT	; P1 manual wrap limit
+		PL_PS	$ef98,CycleP2Character	; replace 0/1 BCHG toggle
+		PL_L	$2534,PORTRAIT_BASE_ALL	; P2 portraits use common 5-entry block
+
+		; P2 normally forms the global character ID as 3 + $157(a5),
+		; because its original choices are character IDs 3 and 4. With both
+		; players now selecting the common global IDs 0..4, make that base 0.
+		PL_W	$1ff4,$0000
+
 		PL_END
+
+; ---------------------------------------------------------------------------
+; Character expansion test routines
+; ---------------------------------------------------------------------------
+
+; The game's table at $e528 is actually a 23-entry RESIDENT resource table.
+; Its first five entries are the character banks. Copy only those five live
+; pointers into our dedicated slave-owned character table. Slot 5 remains
+; reserved for the external $7080 test character used in test 2.
+RefreshCharacterTable
+		movem.l	d0/a0-a1,-(sp)
+		movea.l	#ORIGINAL_CHAR_TABLE,a0
+		lea	CharacterTable(pc),a1
+		moveq	#4,d0
+.copy		move.l	(a0)+,(a1)+
+		dbf	d0,.copy
+		movem.l	(sp)+,d0/a0-a1
+		rts
+
+SelectP1Character
+		movem.l	d0/a1,-(sp)
+		bsr	RefreshCharacterTable
+		moveq	#0,d0
+		move.b	$156(a5),d0
+		lsl.w	#2,d0
+		lea	CharacterTable(pc),a1
+		movea.l	(a1,d0.w),a0
+		movem.l	(sp)+,d0/a1
+		jmp	$2842
+
+SelectP2Character
+		movem.l	d0/a1,-(sp)
+		bsr	RefreshCharacterTable
+		moveq	#0,d0
+		move.b	$157(a5),d0
+		lsl.w	#2,d0
+		lea	CharacterTable(pc),a1
+		movea.l	(a1,d0.w),a0
+		movem.l	(sp)+,d0/a1
+		jmp	$2876
+
+CycleP2Character
+		addq.b	#1,$157(a5)
+		cmpi.b	#CHARACTER_COUNT,$157(a5)
+		bne.b	.done
+		clr.b	$157(a5)
+.done		rts
 
 AccessFault1	add.w	d4,d4
 		move.l	d0,-(sp)
@@ -234,5 +313,11 @@ SaveHi		movem.l	d0-d7/a0-a6,-(sp)
 _resload	dc.l	0
 disknum		dc.w	1
 _tags		dc.l	WHDLTAG_CUSTOM1_GET
-trainer		dc.l    0,0
+_custom1	dc.l    0,0
+		dc.l	TAG_DONE,TAG_DONE
+		even
+CharacterTable	ds.l	CHARACTER_TABLE_SLOTS
+		; [0..4] = original live pointers copied from $e528-$e538
+		; [5]    = reserved for external WHDLoad-loaded test character
+
 hiscore		dc.b	"DalekAttack.High",0

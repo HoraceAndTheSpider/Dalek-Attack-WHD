@@ -1,0 +1,249 @@
+--- DalekAttack_6char_previous.asm
++++ DalekAttack.asm
+@@ -4,7 +4,7 @@
+ ;  :Authors.	  Bored Seal & Hungry Horace
+ ;  :History.   	  2009-08-04 - V1.2
+ ;		  2026-09-05 - V1.3
+-;		  2026-09-06 - 6-character external bank test
++;		  2026-09-06 - 6-character external bank + Hoverbout test
+ ;	
+ ;		This updated patch has no purpose other than to add 
+ ;		additional characters to the game 
+@@ -37,6 +37,12 @@
+ ;   $107A80-$107C7F = externally-loaded CHAR6 portrait
+ PORTRAIT_BASE_ALL	EQU	$107080
+ PORTRAIT6_CHIP		EQU	PORTRAIT_BASE_ALL+(5*PORTRAIT_SIZE)
++
++; Level 1 hoverbout rider graphics are SPRITES1 descriptor 21:
++; 32x56, 6 frames, $380 bytes per frame. Frame 5 is the empty hoverbout.
++HOVERBOUT_SIZE		EQU	$0380
++HOVERBOUT6_CHIP	EQU	$107c80
++LEVEL1_HOVERBOUT6_OFFSET EQU	$b680
+ 
+ ; Selection 5 is new to the game. For non-graphics metadata, alias CHAR6
+ ; to one of the original valid character IDs 0..4.
+@@ -80,6 +86,7 @@
+ 		dc.w	_config-_base		
+ 
+ _config:	dc.b    "C1:X:Player 1 Infinite Lives:0;"	; ws_config;	
++		dc.b    "C2:X:Extra Characters:0;"
+ 		dc.b    0
+ 
+ 
+@@ -88,7 +95,7 @@
+ 		ENDC
+ 
+ DECL_VERSION:MACRO
+-			dc.b	"1.4 (Alpha)"
++			dc.b	"1.5 (Alpha)"
+ 		IFD BARFLY
+ 			dc.b	" "
+ 			INCBIN	"T:date"
+@@ -161,55 +168,58 @@
+ ;$96384 = number of hostages to rescue
+ ;$91cf4 = grenades
+ 
+-NoTrainer	bsr	LoadCharacter6Assets
+-
+-		lea	_gamepatch,a0
+-		suba.l	a1,a1
+-		move.l	_resload,a2
++NoTrainer	lea	_gamepatch(pc),a0
++		lea	_custom2(pc),a1
++		tst.l	(a1)
++		beq.b	.ApplyPatches
++
++		; CUSTOM2 enables all extra-character loading and patches.
++		bsr	LoadCharacter6Assets
++		lea	_character_patch(pc),a0
++
++.ApplyPatches	suba.l	a1,a1
++		move.l	_resload(pc),a2
+ 		jsr	resload_Patch(a2)
+ 		movem.l	(sp)+,a0-a2/d0-d2
+ 
+ 		bsr	LoadHi
+ 		jmp	$800
+ 
++_character_patch	PL_START
++		; Optional extra-character patch list (CUSTOM2).
++		PL_P	$281e,SelectP1Character
++		PL_P	$2862,SelectP2Character
++		PL_W	$ebde,CHARACTER_COUNT
++		PL_W	$eec6,CHARACTER_COUNT
++		PL_PS	$ef98,CycleP2Character
++
++		PL_L	$251a,PORTRAIT_BASE_ALL
++		PL_L	$2534,PORTRAIT_BASE_ALL
++
++		PL_P	$f0b2,SelectP1RuntimeGraphics
++		PL_P	$f0fa,SelectP2RuntimeGraphics
++
++		PL_PS	$1fb8,SetP1CharacterID
++		PL_PS	$1ff2,SetP2CharacterIDBase
++
++		; Original instruction here is JSR $0000D74C.
++		PL_PS	$272c,DecrunchLevelSprites
++
++		PL_NEXT	_gamepatch
++
+ _gamepatch	PL_START
+-		PL_P	$112f2,LoadRNCTracks	;disk loader emulators
++		PL_P	$112f2,LoadRNCTracks
+ 		PL_P	$dc00,InsertDisk1
+ 		PL_P	$dc5e,InsertDisk2
+-		PL_PS	$106a4,SaveHi_Sub	;save highscore routine
+-		PL_R	$fc3a			;remove manual protection
+-		PL_L	$11274,$24094e71	;skip memory test => use 1MB ChipRAM
+-
+-		PL_PS	$5738,AccessFault1	;test a4 for minus value to avoid access fault
+-		PL_PS	$a07c,AccessFault2	;correct 24bit access fault
++		PL_PS	$106a4,SaveHi_Sub
++		PL_R	$fc3a
++		PL_L	$11274,$24094e71
++
++		PL_PS	$5738,AccessFault1
++		PL_PS	$a07c,AccessFault2
+ 		PL_PS	$a0d4,AccessFault2
+-		PL_W	$1036,$4e71		;correct 24bit access fault
++		PL_W	$1036,$4e71
+ 		PL_PS	$1038,AccessFault3
+-
+-; Character expansion: all six entries available to both players.
+-		PL_P	$281e,SelectP1Character
+-		PL_P	$2862,SelectP2Character
+-		PL_W	$ebde,CHARACTER_COUNT	; P1 initial/random divisor
+-		PL_W	$eec6,CHARACTER_COUNT	; P1 manual wrap limit
+-		PL_PS	$ef98,CycleP2Character	; replace original 0/1 BCHG toggle
+-
+-		; Both players index the same new six-entry portrait block.
+-		; These addresses are the longword operands inside LEA ...,A4.
+-		PL_L	$251a,PORTRAIT_BASE_ALL	; P1 portrait base
+-		PL_L	$2534,PORTRAIT_BASE_ALL	; P2 portrait base
+-
+-		; A second pair of routines selects the already-decompressed
+-		; ChipRAM graphics used for drawing the players.  The originals
+-		; hard-code P1 as 0 / 1 / anything-else and P2 as 0 / anything-else,
+-		; which otherwise makes five P1 choices appear as 1,2,3,3,3.
+-		PL_P	$f0b2,SelectP1RuntimeGraphics
+-		PL_P	$f0fa,SelectP2RuntimeGraphics
+-
+-		; IDs 0..4 are valid in the original game. Selection 5 is new,
+-		; so alias it to CHAR6_BEHAVIOUR_ID for old non-graphics tables.
+-		PL_PS	$1fb8,SetP1CharacterID
+-		PL_PS	$1ff2,SetP2CharacterIDBase
+-
+ 		PL_END
+ 
+ ; ---------------------------------------------------------------------------
+@@ -219,10 +229,12 @@
+ ; ---------------------------------------------------------------------------
+ ; External CHAR6 asset loading
+ ; ---------------------------------------------------------------------------
+-; Expected files relative to the slave drawer:
+-;   data/CHAR6.bin             exactly $7080 bytes
+-;   data/CHAR6_portrait.bin    exactly $0200 bytes
++; Expected files relative to the existing data/ current directory:
++;   chars/CHAR6.bin             exactly $7080 bytes
++;   chars/CHAR6_portrait.bin    exactly $0200 bytes
++;   chars/CHAR6_hoverbout.bin  exactly $0380 bytes
+ ;
++; This corresponds to data/chars/... in the installed game drawer.
+ ; PatchGame runs after the main game image is resident, so the original
+ ; portrait data at $1797a is available to copy here.
+ LoadCharacter6Assets
+@@ -239,6 +251,11 @@
+ 		jsr	(resload_GetFileSize,a2)
+ 		cmp.l	#PORTRAIT_SIZE,d0
+ 		bne	.badPortrait
++
++		lea	Char6HoverboutFilename(pc),a0
++		jsr	(resload_GetFileSize,a2)
++		cmp.l	#HOVERBOUT_SIZE,d0
++		bne	.badHoverbout
+ 
+ 		; Copy the five original portraits into the six-entry ChipRAM block.
+ 		movea.l	#ORIGINAL_PORTRAIT_BASE,a0
+@@ -257,6 +274,11 @@
+ 		movea.l	#PORTRAIT6_CHIP,a1
+ 		jsr	(resload_LoadFile,a2)
+ 
++		; One complete 32x56 character+hoverbout frame for Level 1.
++		lea	Char6HoverboutFilename(pc),a0
++		movea.l	#HOVERBOUT6_CHIP,a1
++		jsr	(resload_LoadFile,a2)
++
+ 		; Permanent external entry 5 in both slave-owned character tables.
+ 		lea	CharacterTable(pc),a0
+ 		move.l	#CHAR6_CHIP,$14(a0)
+@@ -272,11 +294,41 @@
+ .badPortrait	lea	BadPortrait6Message(pc),a0
+ 		bra	AbortAssetError
+ 
++.badHoverbout	lea	BadHoverbout6Message(pc),a0
++		bra	AbortAssetError
++
+ AbortAssetError
+ 		move.l	a0,-(sp)
+ 		pea	TDREASON_FAILMSG
+ 		move.l	(_resload,pc),a2
+ 		jmp	(resload_Abort,a2)
++
++; ---------------------------------------------------------------------------
++; Level 1 sixth hoverbout frame
++; ---------------------------------------------------------------------------
++; SPRITES1 descriptor 21:
++;   width 32, height 56, frames 6, bytes/frame $380
++;   descriptor data begins at SPRITES1 bank offset $A500
++;   frame 5 begins at $A500 + (5*$380) = $B680
++;
++; Original frames 0..4 are CHAR1..CHAR5 on the hoverbout.
++; Original frame 5 is the empty hoverbout, which is why CHAR6 currently
++; appears without its rider. The selector already chooses frame 5 correctly.
++DecrunchLevelSprites
++		jsr	$d74c			; original Ice depacker
++		movem.l	d0-d1/a0-a2,-(sp)
++		tst.w	$8a(a5)		; 0 = Level 1 / SPRITES1
++		bne.b	.done
++
++		movea.l	#HOVERBOUT6_CHIP,a0
++		movea.l	$55f8,a1
++		adda.l	#LEVEL1_HOVERBOUT6_OFFSET,a1
++		move.w	#(HOVERBOUT_SIZE/4)-1,d0
++.copy		move.l	(a0)+,(a1)+
++		dbf	d0,.copy
++
++.done		movem.l	(sp)+,d0-d1/a0-a2
++		rts
+ 
+ ; ---------------------------------------------------------------------------
+ ; Safe original-game character ID mapping
+@@ -477,8 +529,10 @@
+ _resload	dc.l	0
+ disknum		dc.w	1
+ _tags		dc.l	WHDLTAG_CUSTOM1_GET
+-_custom1	dc.l    0,0
+-		dc.l	TAG_DONE,TAG_DONE
++_custom1	dc.l	0
++		dc.l	WHDLTAG_CUSTOM2_GET
++_custom2	dc.l	0
++		dc.l	TAG_DONE,0
+ 		even
+ CharacterTable	ds.l	CHARACTER_TABLE_SLOTS
+ RuntimeCharacterTable	ds.l	CHARACTER_TABLE_SLOTS
+@@ -486,9 +540,11 @@
+ 		; [5]    = external CHAR6 at CHAR6_CHIP
+ 
+ 		even
+-Char6Filename		dc.b	"data/CHAR6.bin",0
+-Char6PortraitFilename	dc.b	"data/CHAR6_portrait.bin",0
+-BadChar6Message		dc.b	"data/CHAR6.bin missing or wrong size - expected $7080 bytes",0
+-BadPortrait6Message	dc.b	"data/CHAR6_portrait.bin missing or wrong size - expected $0200 bytes",0
++Char6Filename		dc.b	"chars/CHAR6.bin",0
++Char6PortraitFilename	dc.b	"chars/CHAR6_portrait.bin",0
++Char6HoverboutFilename dc.b	"chars/CHAR6_hoverbout.bin",0
++BadChar6Message		dc.b	"chars/CHAR6.bin missing or wrong size - expected $7080 bytes",0
++BadPortrait6Message	dc.b	"chars/CHAR6_portrait.bin missing or wrong size - expected $0200 bytes",0
++BadHoverbout6Message	dc.b	"chars/CHAR6_hoverbout.bin missing or wrong size - expected $0380 bytes",0
+ 		even
+ hiscore		dc.b	"DalekAttack.High",0

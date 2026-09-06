@@ -1,0 +1,4 @@
+CHAR1 round-trip verification
+original sha256: 261c636171adf61d4ba047ba21e619736b11d838d3f42117039f465d4c59f5fe
+PNG roundtrip: OK
+ILBM roundtrip: OK

@@ -1,0 +1,106 @@
+--- DalekAttack_Hoverbout_v1.asm
++++ DalekAttack.asm
+@@ -4,7 +4,7 @@
+ ;  :Authors.	  Bored Seal & Hungry Horace
+ ;  :History.   	  2009-08-04 - V1.2
+ ;		  2026-09-05 - V1.3
+-;		  2026-09-06 - 6-character external bank + Hoverbout test
++;		  2026-09-06 - 6-character external bank + Hoverbout fix
+ ;	
+ ;		This updated patch has no purpose other than to add 
+ ;		additional characters to the game 
+@@ -95,7 +95,7 @@
+ 		ENDC
+ 
+ DECL_VERSION:MACRO
+-			dc.b	"1.5 (Alpha)"
++			dc.b	"1.6 (Alpha)"
+ 		IFD BARFLY
+ 			dc.b	" "
+ 			INCBIN	"T:date"
+@@ -202,8 +202,12 @@
+ 		PL_PS	$1fb8,SetP1CharacterID
+ 		PL_PS	$1ff2,SetP2CharacterIDBase
+ 
+-		; Original instruction here is JSR $0000D74C.
+-		PL_PS	$272c,DecrunchLevelSprites
++		; Level 1 Hoverbout:
++		; $26B2 is the original BSR.W $5562 followed by RTS at $26B6.
++		; PL_P replaces both with a JMP to our wrapper. The wrapper inserts
++		; CHAR6 into the raw SPRITES1 bank, then JMPs to the original $5562
++		; descriptor/mask builder; its RTS returns directly to the caller.
++		PL_P	$26b2,BuildLevelSprites
+ 
+ 		PL_NEXT	_gamepatch
+ 
+@@ -304,21 +308,39 @@
+ 		jmp	(resload_Abort,a2)
+ 
+ ; ---------------------------------------------------------------------------
+-; Level 1 sixth hoverbout frame
+-; ---------------------------------------------------------------------------
+-; SPRITES1 descriptor 21:
+-;   width 32, height 56, frames 6, bytes/frame $380
+-;   descriptor data begins at SPRITES1 bank offset $A500
+-;   frame 5 begins at $A500 + (5*$380) = $B680
+-;
+-; Original frames 0..4 are CHAR1..CHAR5 on the hoverbout.
+-; Original frame 5 is the empty hoverbout, which is why CHAR6 currently
+-; appears without its rider. The selector already chooses frame 5 correctly.
+-DecrunchLevelSprites
+-		jsr	$d74c			; original Ice depacker
++; Level 1 sixth Hoverbout frame
++; ---------------------------------------------------------------------------
++; Level 1's descriptor list is:
++;   0C,0F,06,0B,03,0A,02,04,11,13,15,...
++;
++; Summing the raw byte sizes of descriptors before ID $15 gives $A500.
++; Descriptor $15 (decimal 21) is:
++;   32 x 56
++;   6 frames
++;   $0380 bytes per frame
++;
++; Therefore its sixth frame begins at:
++;   $A500 + (5 * $0380) = $B680
++;
++; $26B2 in the original game is:
++;   BSR.W   $5562
++;   RTS
++;
++; _character_patch replaces those six bytes with a JMP here. At this point:
++;   - SPRITES1 has already been Ice-depacked;
++;   - $55F8 still points at the START of the raw sprite bank;
++;   - $5562 has not yet advanced $55F8 or built descriptor pointers/masks.
++;
++; This is therefore the most direct point to replace the empty sixth
++; Hoverbout frame before the game consumes it.
++BuildLevelSprites
++		; For non-Level-1 banks, behave exactly like the original code.
++		tst.w	$8a(a5)
++		bne.b	.build
++
++		; Preserve the original call-state. $5562 expects A0 to still contain
++		; the selected descriptor-list pointer.
+ 		movem.l	d0-d1/a0-a2,-(sp)
+-		tst.w	$8a(a5)		; 0 = Level 1 / SPRITES1
+-		bne.b	.done
+ 
+ 		movea.l	#HOVERBOUT6_CHIP,a0
+ 		movea.l	$55f8,a1
+@@ -327,8 +349,14 @@
+ .copy		move.l	(a0)+,(a1)+
+ 		dbf	d0,.copy
+ 
+-.done		movem.l	(sp)+,d0-d1/a0-a2
+-		rts
++		; The colour data will later be read by Amiga DMA/blitter paths.
++		; Ensure the CPU copy is committed before $5562 builds the mask.
++		move.l	(_resload,pc),a2
++		jsr	(resload_FlushCache,a2)
++
++		movem.l	(sp)+,d0-d1/a0-a2
++
++.build		jmp	$5562
+ 
+ ; ---------------------------------------------------------------------------
+ ; Safe original-game character ID mapping
