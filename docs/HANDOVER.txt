@@ -1,0 +1,18 @@
+Dalek Attack WHDLoad reverse-engineering documentation snapshot
+================================================================
+
+See docs/README.md.
+
+Snapshot date: 2026-09-06
+
+Most important current state:
+- Five original playable banks extracted from Disk.1 and fully understood.
+- Character format: 45 x 32x40, 4 planes, $7080 raw.
+- Portrait format: 32x32, 4 planes, $0200 raw, separate menu/HUD palette.
+- Both players expanded to all five originals successfully.
+- External CHAR6.bin + CHAR6_portrait.bin working.
+- Level 1 rider-on-Hoverbout is separate SPRITES1 descriptor 21.
+- Hoverbout frame: 32x56, $0380; sixth original frame is empty Hoverbout.
+- CUSTOM2 gates the extra-character patch list.
+- Latest Hoverbout insertion moved to pre-$5562 setup at $26B2; awaiting in-game confirmation.
+- Preventing P1/P2 selecting the same character is intentionally still TODO.
