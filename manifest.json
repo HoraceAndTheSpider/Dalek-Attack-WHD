@@ -1,0 +1,23 @@
+{
+  "pack": "Dalek Attack Character Builder research handover",
+  "documentation": [
+    "README.md",
+    "docs/11-character-builder-research.md",
+    "docs/12-character-builder-component-and-layer-model.md",
+    "docs/13-character-builder-analysis-method.md",
+    "docs/14-character-builder-implementation-plan.md",
+    "docs/15-character-builder-handover.md"
+  ],
+  "reference_assets": [
+    "char1-parts-preview.png",
+    "char1-parts.iff",
+    "char2-parts-preview.png",
+    "char2-parts.iff",
+    "char2_frame0_original.png",
+    "char2_frame0_reconstructed.png",
+    "char2_frame0_reconstruction_proof.png",
+    "char2_stage3_component_spec.json",
+    "frame-numbering-reference.png"
+  ],
+  "handover_status": "Stage 1 frame taxonomy complete; Stage 2 component/layer model complete; Stage 3 CHAR2 frame-0 reconstruction complete; second representative CHAR2 component sheet ready for analysis."
+}

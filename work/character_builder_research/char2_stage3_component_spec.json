@@ -1,0 +1,297 @@
+{
+  "source": "User-supplied CHAR2 frame-0 labelled component ILBM",
+  "ilbm": {
+    "width": 281,
+    "height": 79,
+    "bitplanes": 4,
+    "masking": 2,
+    "compression": 1
+  },
+  "frame_size": [
+    32,
+    40
+  ],
+  "components": {
+    "hat": {
+      "sheet_box": [
+        42,
+        12,
+        53,
+        18
+      ],
+      "anchor": [
+        8,
+        0
+      ],
+      "size": [
+        12,
+        7
+      ],
+      "occupied_pixels": 43
+    },
+    "head": {
+      "sheet_box": [
+        74,
+        15,
+        81,
+        21
+      ],
+      "anchor": [
+        9,
+        3
+      ],
+      "size": [
+        8,
+        7
+      ],
+      "occupied_pixels": 35
+    },
+    "scarf": {
+      "sheet_box": [
+        93,
+        19,
+        101,
+        40
+      ],
+      "anchor": [
+        10,
+        7
+      ],
+      "size": [
+        9,
+        22
+      ],
+      "occupied_pixels": 118
+    },
+    "left_hand": {
+      "sheet_box": [
+        132,
+        33,
+        136,
+        37
+      ],
+      "anchor": [
+        15,
+        21
+      ],
+      "note": "Labelled R.Hand in source sheet; anatomically left hand.",
+      "size": [
+        5,
+        5
+      ],
+      "occupied_pixels": 20
+    },
+    "right_hand_sonic": {
+      "sheet_box": [
+        152,
+        27,
+        158,
+        34
+      ],
+      "anchor": [
+        5,
+        15
+      ],
+      "note": "Labelled L.Hand in source sheet; anatomically right hand and includes sonic screwdriver.",
+      "size": [
+        7,
+        8
+      ],
+      "occupied_pixels": 25
+    },
+    "coat": {
+      "sheet_box": [
+        192,
+        21,
+        199,
+        44
+      ],
+      "anchor": [
+        15,
+        9
+      ],
+      "size": [
+        8,
+        24
+      ],
+      "occupied_pixels": 117
+    },
+    "leg": {
+      "sheet_box": [
+        220,
+        40,
+        226,
+        51
+      ],
+      "anchor": [
+        13,
+        28
+      ],
+      "size": [
+        7,
+        12
+      ],
+      "occupied_pixels": 51
+    },
+    "foot": {
+      "sheet_box": [
+        240,
+        46,
+        248,
+        51
+      ],
+      "anchor": [
+        10,
+        34
+      ],
+      "size": [
+        9,
+        6
+      ],
+      "occupied_pixels": 27
+    }
+  },
+  "initial_layer_order": [
+    "hat",
+    "head",
+    "scarf",
+    "left_hand",
+    "right_hand_sonic",
+    "coat",
+    "leg",
+    "foot"
+  ],
+  "reconstruction_stats": {
+    "ground_truth_occupied_pixels": 391,
+    "reconstruction_occupied_pixels": 393,
+    "ground_truth_pixels_reproduced_exactly": 384,
+    "missing_ground_truth_pixels": 7,
+    "extra_pixels_from_standalone_components": 9,
+    "palette_mismatches_where_both_are_occupied": 0,
+    "ground_truth_coverage_percent": 98.21
+  },
+  "component_validation": {
+    "hat": {
+      "pixels": 43,
+      "pixels_matching_original_exactly": 43,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    },
+    "head": {
+      "pixels": 35,
+      "pixels_matching_original_exactly": 35,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    },
+    "scarf": {
+      "pixels": 118,
+      "pixels_matching_original_exactly": 109,
+      "standalone_pixels_not_visible_in_assembled_original": 9,
+      "palette_mismatches": 0
+    },
+    "left_hand": {
+      "pixels": 20,
+      "pixels_matching_original_exactly": 20,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    },
+    "right_hand_sonic": {
+      "pixels": 25,
+      "pixels_matching_original_exactly": 25,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    },
+    "coat": {
+      "pixels": 117,
+      "pixels_matching_original_exactly": 117,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    },
+    "leg": {
+      "pixels": 51,
+      "pixels_matching_original_exactly": 51,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    },
+    "foot": {
+      "pixels": 27,
+      "pixels_matching_original_exactly": 27,
+      "standalone_pixels_not_visible_in_assembled_original": 0,
+      "palette_mismatches": 0
+    }
+  },
+  "confirmed_pose_groups": {
+    "idle_fire": [
+      0,
+      1
+    ],
+    "horizontal_locomotion": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "crouch": [
+      8
+    ],
+    "horizontal_jump_fall": [
+      9,
+      10,
+      11
+    ],
+    "upward_reach_jump_grab_wire": [
+      12,
+      13,
+      14,
+      15
+    ],
+    "crouch_fire": [
+      16
+    ],
+    "ladder_or_face_on_climb": [
+      17,
+      18,
+      19,
+      20
+    ],
+    "rear_facing_four_step_movement": [
+      21,
+      22,
+      23,
+      24
+    ],
+    "front_back_interaction_menu": [
+      25,
+      26,
+      27
+    ]
+  },
+  "derived_horizontal_mirror_frames": {
+    "0": 28,
+    "1": 29,
+    "2": 30,
+    "3": 31,
+    "4": 32,
+    "5": 33,
+    "6": 34,
+    "7": 35,
+    "8": 36,
+    "9": 37,
+    "10": 38,
+    "11": 39,
+    "12": 40,
+    "13": 41,
+    "14": 42,
+    "15": 43,
+    "16": 44
+  },
+  "notes": [
+    "Right-facing frames 28-44 are derived from 0-16 by horizontal flip, with optional manual override.",
+    "The scarf contains 9 standalone black outline pixels that are not visible in the assembled frame-0 sprite.",
+    "Seven original pixels are not represented by the supplied components; their location is consistent with the omitted arm/sleeve/join area.",
+    "No palette-index mismatch occurs where supplied component pixels overlap occupied pixels in the assembled original.",
+    "Garments should support optional front/rear sublayers, but should not be split unless a pose actually needs an intervening limb layer."
+  ]
+}
