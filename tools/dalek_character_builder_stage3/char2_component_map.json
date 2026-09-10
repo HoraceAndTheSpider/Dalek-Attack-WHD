@@ -1,0 +1,1018 @@
+{
+  "authority": {
+    "char2_bin_git_blob_sha": "1fcf32064311515a8ec46f09c329f23439a3b080",
+    "repo_expected_sha": "1fcf32064311515a8ec46f09c329f23439a3b080",
+    "byte_equivalent": true,
+    "note": "analysis raw bytes are byte-for-byte Git-blob-equivalent to current work/CHAR2.bin"
+  },
+  "representative_input_integrity": {
+    "3": {
+      "all_sheet_x_offset_vs_source": 7,
+      "source_occupied": 537,
+      "sheet_all_occupied": 537,
+      "exact_occupied": 537,
+      "missing": 0,
+      "extra": 0,
+      "palette_mismatch": 0,
+      "geometry_iou": 1.0
+    },
+    "9": {
+      "all_sheet_x_offset_vs_source": 15,
+      "source_occupied": 484,
+      "sheet_all_occupied": 484,
+      "exact_occupied": 484,
+      "missing": 0,
+      "extra": 0,
+      "palette_mismatch": 0,
+      "geometry_iou": 1.0
+    },
+    "12": {
+      "all_sheet_x_offset_vs_source": 5,
+      "source_occupied": 518,
+      "sheet_all_occupied": 536,
+      "exact_occupied": 35,
+      "missing": 14,
+      "extra": 32,
+      "palette_mismatch": 469,
+      "geometry_iou": 0.916364
+    },
+    "17": {
+      "all_sheet_x_offset_vs_source": 1,
+      "source_occupied": 555,
+      "sheet_all_occupied": 551,
+      "exact_occupied": 29,
+      "missing": 33,
+      "extra": 29,
+      "palette_mismatch": 493,
+      "geometry_iou": 0.893836
+    },
+    "25": {
+      "all_sheet_x_offset_vs_source": -2,
+      "source_occupied": 510,
+      "sheet_all_occupied": 517,
+      "exact_occupied": 51,
+      "missing": 6,
+      "extra": 13,
+      "palette_mismatch": 453,
+      "geometry_iou": 0.963671
+    }
+  },
+  "families": {
+    "head": {
+      "variants": [
+        "side_head_f0",
+        "jump_head_f9",
+        "reach/front/rear/climb variants still required"
+      ],
+      "reuse_status": "side_head_f0 EXACT_TRANSLATION in frames 0-8; jump_head_f9 EXACT_TRANSLATION in frames 9 and 10; frame16 is NEAR_DUPLICATE_SEAM (34/35 standalone pixels exact)",
+      "notes": "f3 head isolation contains f0 head plus five adjacent/seam pixels; do not treat those five as immutable head artwork."
+    },
+    "hat_headwear": {
+      "variants": [
+        "side_hat_f0",
+        "jump_hat_f9",
+        "front/rear/climb variants required"
+      ],
+      "reuse_status": "side_hat_f0 EXACT_TRANSLATION in 0-8 and 16. f3 hat cut is a NEAR_DUPLICATE_SEAM boundary variant of the same side hat. f9 hat is a POSE_VARIANT.",
+      "notes": "Hat reuse is the strongest proven artwork reuse after flip derivation."
+    },
+    "scarf_accessory": {
+      "variants": [
+        "frame0_side_scarf",
+        "frame3_locomotion_scarf",
+        "frame9_jump_scarf",
+        "reach/climb/front/rear variants required"
+      ],
+      "reuse_status": "POSE_VARIANT between reliable frame0/3/9 evidence",
+      "notes": "frame0 standalone scarf needs a 9-pixel seam suppression; no other exact translated hit from raw standalone scarf because its hidden border pixels are not present in the composite."
+    },
+    "torso_coat": {
+      "variants": [
+        "frame0_idle_coat",
+        "frame3_locomotion_coat",
+        "frame9_jump_coat",
+        "family variants required for remaining views"
+      ],
+      "reuse_status": "reliable frame0/3/9 coats are POSE_VARIANT, not translations",
+      "notes": "No reliable representative evidence requires a front/rear coat split for CHAR2 yet. Keep split support optional; frames12/17/25 cannot be used to prove split because their indexed rows are invalid."
+    },
+    "arms_hands": {
+      "variants": [
+        "frame0_left_hand",
+        "frame0_right_hand_sonic",
+        "frame3_L_HA",
+        "frame9_L_HA",
+        "frame9_R_HA",
+        "remaining pose/view variants"
+      ],
+      "reuse_status": "small hand assets are mostly pose-specific under exact indexed search",
+      "notes": "Frame3 R_HA entry is ABSENT/OBSCURED by coat. Second-sheet L/R labels are retained literally until anatomical mapping is re-confirmed."
+    },
+    "sonic_equipment_hand": {
+      "variants": [
+        "frame0_right_hand_sonic",
+        "pose-specific equipment-hand variants"
+      ],
+      "reuse_status": "frame0 equipment-hand exact only in frame0 among 0-27",
+      "notes": "Combining tiny equipment with the hand remains justified."
+    },
+    "legs": {
+      "variants": [
+        "frame0_single_leg",
+        "frame3_compound_leg_pose",
+        "frame9_compound_leg_pose",
+        "front/rear/climb variants"
+      ],
+      "reuse_status": "POSE_VARIANT across reliable representative poses",
+      "notes": "Locomotion/jump supplied LEG entries are compound multi-leg pose artwork, not a single rigid translated leg."
+    },
+    "feet": {
+      "variants": [
+        "frame0_single_foot",
+        "frame3_compound_feet",
+        "frame9_compound_feet",
+        "view variants"
+      ],
+      "reuse_status": "frame0 foot has exact semantic-location translations in frames 0, 7 and 25; reliable f3/f9 feet are POSE_VARIANT",
+      "notes": "Frame25 source independently contains the frame0 foot at (6,34), although the supplied frame25 isolated row is index-divergent."
+    },
+    "front_facing": {
+      "variants": [
+        "frame25 front/menu set",
+        "climb face-on set"
+      ],
+      "reuse_status": "VIEW_VARIANT required",
+      "notes": "frame25 supplied masks are useful for approximate geometry but fail indexed-source integrity and must be re-cut/re-exported before asset finalisation."
+    },
+    "rear_facing": {
+      "variants": [
+        "frames21-24 rear movement",
+        "frame26 rear interaction"
+      ],
+      "reuse_status": "VIEW_VARIANT required; internal mirror geometry can be exploited as already documented",
+      "notes": "Do not force literal final-bitmap mirror where palette/shading differs."
+    },
+    "climb": {
+      "variants": [
+        "frames17-20 climb set"
+      ],
+      "reuse_status": "VIEW_VARIANT required",
+      "notes": "frame17 head is OBSCURED/ABSENT in supplied cut-up. Hat/scarf are in front of the hidden head by user evidence."
+    }
+  },
+  "reliable_asset_exact_hits_0_27": {
+    "f0_hat": {
+      "0": [
+        [
+          8,
+          0
+        ]
+      ],
+      "1": [
+        [
+          9,
+          0
+        ]
+      ],
+      "2": [
+        [
+          8,
+          1
+        ]
+      ],
+      "3": [
+        [
+          8,
+          0
+        ]
+      ],
+      "4": [
+        [
+          8,
+          1
+        ]
+      ],
+      "5": [
+        [
+          8,
+          1
+        ]
+      ],
+      "6": [
+        [
+          8,
+          0
+        ]
+      ],
+      "7": [
+        [
+          8,
+          1
+        ]
+      ],
+      "8": [
+        [
+          8,
+          5
+        ]
+      ],
+      "16": [
+        [
+          8,
+          14
+        ]
+      ]
+    },
+    "f0_head": {
+      "0": [
+        [
+          9,
+          3
+        ]
+      ],
+      "1": [
+        [
+          10,
+          3
+        ]
+      ],
+      "2": [
+        [
+          9,
+          4
+        ]
+      ],
+      "3": [
+        [
+          9,
+          3
+        ]
+      ],
+      "4": [
+        [
+          9,
+          4
+        ]
+      ],
+      "5": [
+        [
+          9,
+          4
+        ]
+      ],
+      "6": [
+        [
+          9,
+          3
+        ]
+      ],
+      "7": [
+        [
+          9,
+          4
+        ]
+      ],
+      "8": [
+        [
+          9,
+          8
+        ]
+      ]
+    },
+    "f0_scarf": {},
+    "f0_left_hand": {
+      "0": [
+        [
+          15,
+          21
+        ]
+      ]
+    },
+    "f0_right_hand_sonic": {
+      "0": [
+        [
+          5,
+          15
+        ]
+      ]
+    },
+    "f0_coat": {
+      "0": [
+        [
+          15,
+          9
+        ]
+      ]
+    },
+    "f0_leg": {
+      "0": [
+        [
+          13,
+          28
+        ]
+      ]
+    },
+    "f0_foot": {
+      "0": [
+        [
+          10,
+          34
+        ]
+      ],
+      "7": [
+        [
+          8,
+          34
+        ]
+      ],
+      "25": [
+        [
+          6,
+          34
+        ]
+      ]
+    },
+    "f3_hat": {
+      "0": [
+        [
+          8,
+          0
+        ]
+      ],
+      "1": [
+        [
+          9,
+          0
+        ]
+      ],
+      "2": [
+        [
+          8,
+          1
+        ]
+      ],
+      "3": [
+        [
+          8,
+          0
+        ]
+      ],
+      "4": [
+        [
+          8,
+          1
+        ]
+      ],
+      "5": [
+        [
+          8,
+          1
+        ]
+      ],
+      "6": [
+        [
+          8,
+          0
+        ]
+      ],
+      "7": [
+        [
+          8,
+          1
+        ]
+      ],
+      "8": [
+        [
+          8,
+          5
+        ]
+      ],
+      "16": [
+        [
+          8,
+          14
+        ]
+      ]
+    },
+    "f3_head": {
+      "0": [
+        [
+          9,
+          3
+        ]
+      ],
+      "1": [
+        [
+          10,
+          3
+        ]
+      ],
+      "2": [
+        [
+          9,
+          4
+        ]
+      ],
+      "3": [
+        [
+          9,
+          3
+        ]
+      ],
+      "4": [
+        [
+          9,
+          4
+        ]
+      ],
+      "5": [
+        [
+          9,
+          4
+        ]
+      ],
+      "6": [
+        [
+          9,
+          3
+        ]
+      ],
+      "7": [
+        [
+          9,
+          4
+        ]
+      ],
+      "8": [
+        [
+          9,
+          8
+        ]
+      ]
+    },
+    "f3_scarf": {
+      "3": [
+        [
+          11,
+          4
+        ]
+      ]
+    },
+    "f3_L_HA": {
+      "3": [
+        [
+          5,
+          14
+        ]
+      ]
+    },
+    "f3_coat": {
+      "3": [
+        [
+          10,
+          8
+        ]
+      ]
+    },
+    "f3_leg": {
+      "3": [
+        [
+          8,
+          21
+        ]
+      ]
+    },
+    "f3_foot": {
+      "3": [
+        [
+          6,
+          33
+        ]
+      ]
+    },
+    "f9_hat": {
+      "9": [
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "f9_head": {
+      "9": [
+        [
+          5,
+          4
+        ]
+      ],
+      "10": [
+        [
+          11,
+          3
+        ]
+      ]
+    },
+    "f9_scarf": {
+      "9": [
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    "f9_L_HA": {
+      "9": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    "f9_R_HA": {
+      "9": [
+        [
+          0,
+          9
+        ]
+      ]
+    },
+    "f9_coat": {
+      "9": [
+        [
+          5,
+          10
+        ]
+      ]
+    },
+    "f9_leg": {
+      "9": [
+        [
+          3,
+          23
+        ]
+      ]
+    },
+    "f9_foot": {
+      "9": [
+        [
+          0,
+          27
+        ]
+      ]
+    }
+  },
+  "reliable_variant_relationships": [
+    {
+      "family": "hat",
+      "a": "f0_hat",
+      "b": "f3_hat",
+      "relationship": "NEAR_DUPLICATE_SEAM",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 0
+      },
+      "different_union_pixels": 3,
+      "union_pixels": 44,
+      "palette_mismatches_on_overlap": 0,
+      "difference_ratio": 0.068182
+    },
+    {
+      "family": "hat",
+      "a": "f0_hat",
+      "b": "f9_hat",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 0
+      },
+      "different_union_pixels": 22,
+      "union_pixels": 51,
+      "palette_mismatches_on_overlap": 13,
+      "difference_ratio": 0.431373
+    },
+    {
+      "family": "hat",
+      "a": "f3_hat",
+      "b": "f9_hat",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 0
+      },
+      "different_union_pixels": 22,
+      "union_pixels": 51,
+      "palette_mismatches_on_overlap": 12,
+      "difference_ratio": 0.431373
+    },
+    {
+      "family": "head",
+      "a": "f0_head",
+      "b": "f3_head",
+      "relationship": "NEAR_DUPLICATE_SEAM",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 0
+      },
+      "different_union_pixels": 5,
+      "union_pixels": 40,
+      "palette_mismatches_on_overlap": 0,
+      "difference_ratio": 0.125
+    },
+    {
+      "family": "head",
+      "a": "f0_head",
+      "b": "f9_head",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 0
+      },
+      "different_union_pixels": 4,
+      "union_pixels": 35,
+      "palette_mismatches_on_overlap": 2,
+      "difference_ratio": 0.114286
+    },
+    {
+      "family": "head",
+      "a": "f3_head",
+      "b": "f9_head",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 0
+      },
+      "different_union_pixels": 9,
+      "union_pixels": 40,
+      "palette_mismatches_on_overlap": 2,
+      "difference_ratio": 0.225
+    },
+    {
+      "family": "scarf",
+      "a": "f0_scarf",
+      "b": "f3_scarf",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 1,
+        "dy": -3
+      },
+      "different_union_pixels": 147,
+      "union_pixels": 169,
+      "palette_mismatches_on_overlap": 0,
+      "difference_ratio": 0.869822
+    },
+    {
+      "family": "scarf",
+      "a": "f0_scarf",
+      "b": "f9_scarf",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": -3,
+        "dy": -3
+      },
+      "different_union_pixels": 147,
+      "union_pixels": 160,
+      "palette_mismatches_on_overlap": 13,
+      "difference_ratio": 0.91875
+    },
+    {
+      "family": "scarf",
+      "a": "f3_scarf",
+      "b": "f9_scarf",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": true,
+        "dx": 3,
+        "dy": -3
+      },
+      "different_union_pixels": 90,
+      "union_pixels": 103,
+      "palette_mismatches_on_overlap": 25,
+      "difference_ratio": 0.873786
+    },
+    {
+      "family": "coat",
+      "a": "f0_coat",
+      "b": "f3_coat",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": true,
+        "dx": -3,
+        "dy": 1
+      },
+      "different_union_pixels": 180,
+      "union_pixels": 240,
+      "palette_mismatches_on_overlap": 49,
+      "difference_ratio": 0.75
+    },
+    {
+      "family": "coat",
+      "a": "f0_coat",
+      "b": "f9_coat",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": true,
+        "dx": -3,
+        "dy": 2
+      },
+      "different_union_pixels": 176,
+      "union_pixels": 218,
+      "palette_mismatches_on_overlap": 52,
+      "difference_ratio": 0.807339
+    },
+    {
+      "family": "coat",
+      "a": "f3_coat",
+      "b": "f9_coat",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": -1,
+        "dy": 1
+      },
+      "different_union_pixels": 123,
+      "union_pixels": 239,
+      "palette_mismatches_on_overlap": 72,
+      "difference_ratio": 0.514644
+    },
+    {
+      "family": "leg",
+      "a": "f0_leg",
+      "b": "f3_leg",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": -1,
+        "dy": -2
+      },
+      "different_union_pixels": 116,
+      "union_pixels": 137,
+      "palette_mismatches_on_overlap": 27,
+      "difference_ratio": 0.846715
+    },
+    {
+      "family": "leg",
+      "a": "f0_leg",
+      "b": "f9_leg",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": -1,
+        "dy": -3
+      },
+      "different_union_pixels": 96,
+      "union_pixels": 109,
+      "palette_mismatches_on_overlap": 22,
+      "difference_ratio": 0.880734
+    },
+    {
+      "family": "leg",
+      "a": "f3_leg",
+      "b": "f9_leg",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": -2,
+        "dy": 2
+      },
+      "different_union_pixels": 134,
+      "union_pixels": 157,
+      "palette_mismatches_on_overlap": 47,
+      "difference_ratio": 0.853503
+    },
+    {
+      "family": "foot",
+      "a": "f0_foot",
+      "b": "f3_foot",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": false,
+        "dx": 0,
+        "dy": 2
+      },
+      "different_union_pixels": 57,
+      "union_pixels": 66,
+      "palette_mismatches_on_overlap": 11,
+      "difference_ratio": 0.863636
+    },
+    {
+      "family": "foot",
+      "a": "f0_foot",
+      "b": "f9_foot",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": true,
+        "dx": 2,
+        "dy": -1
+      },
+      "different_union_pixels": 58,
+      "union_pixels": 65,
+      "palette_mismatches_on_overlap": 11,
+      "difference_ratio": 0.892308
+    },
+    {
+      "family": "foot",
+      "a": "f3_foot",
+      "b": "f9_foot",
+      "relationship": "POSE_VARIANT",
+      "best_transform": {
+        "mirror_x": true,
+        "dx": -2,
+        "dy": -3
+      },
+      "different_union_pixels": 83,
+      "union_pixels": 92,
+      "palette_mismatches_on_overlap": 14,
+      "difference_ratio": 0.902174
+    }
+  ],
+  "frame0_seam_evidence": {
+    "stats": {
+      "original_occupied": 391,
+      "exact": 384,
+      "missing": 7,
+      "extra": 9,
+      "palette_mismatch": 0
+    },
+    "extra_pixels_xy": [
+      [
+        11,
+        10
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        26
+      ],
+      [
+        11,
+        27
+      ],
+      [
+        12,
+        28
+      ]
+    ],
+    "missing_pixels_xy": [
+      [
+        16,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        16,
+        26
+      ],
+      [
+        17,
+        26
+      ],
+      [
+        16,
+        27
+      ]
+    ]
+  },
+  "flip_derivation_28_44": [
+    {
+      "source": 0,
+      "derived": 28,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 1,
+      "derived": 29,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 2,
+      "derived": 30,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 3,
+      "derived": 31,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 4,
+      "derived": 32,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 5,
+      "derived": 33,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 6,
+      "derived": 34,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 7,
+      "derived": 35,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 8,
+      "derived": 36,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 9,
+      "derived": 37,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 10,
+      "derived": 38,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 11,
+      "derived": 39,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 12,
+      "derived": 40,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 13,
+      "derived": 41,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 14,
+      "derived": 42,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 15,
+      "derived": 43,
+      "exact": true,
+      "different_pixels": 0
+    },
+    {
+      "source": 16,
+      "derived": 44,
+      "exact": true,
+      "different_pixels": 0
+    }
+  ],
+  "status": "PARTIAL_PROOF_STRONG_BUT_FULL_SEMANTIC_PROOF_BLOCKED_BY_INDEX_DIVERGENT_REFERENCE_ROWS"
+}

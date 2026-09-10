@@ -1,0 +1,218 @@
+{
+  "global": {
+    "composition": "indexed pixels; integer anchors; explicit z-order; optional seam suppression; no rotation/scaling/tweening",
+    "overlap_rule": "When two donor components overlap with different indices, ownership must be explicit. Identical-index overlap is assembly-equivalent but should still have deterministic ownership for editing.",
+    "coat_split_policy": "Do not split coat merely because it is long. Split into rear/front depth layers only when a limb genuinely needs to pass between garment regions in a proven pose.",
+    "current_char2_split_evidence": "NOT_PROVEN_REQUIRED from reliable frames 0,3,9. Unresolved for 12,17,25 because those supplied rows fail source-index integrity."
+  },
+  "frame0": {
+    "constraints": [
+      "scarf standalone border requires seam treatment against adjacent clothing"
+    ],
+    "seam_suppress_xy": [
+      [
+        11,
+        10
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        11,
+        23
+      ],
+      [
+        11,
+        24
+      ],
+      [
+        10,
+        25
+      ],
+      [
+        10,
+        26
+      ],
+      [
+        11,
+        27
+      ],
+      [
+        12,
+        28
+      ]
+    ],
+    "missing_join_xy": [
+      [
+        16,
+        20
+      ],
+      [
+        17,
+        20
+      ],
+      [
+        16,
+        21
+      ],
+      [
+        18,
+        21
+      ],
+      [
+        16,
+        26
+      ],
+      [
+        17,
+        26
+      ],
+      [
+        16,
+        27
+      ]
+    ],
+    "z_order": "not uniquely recoverable from equal-index overlap; seam mask is the safer explicit representation"
+  },
+  "frame3": {
+    "constraints": [
+      "coat above/occludes R_HA/right-hand entry (component intentionally absent)"
+    ],
+    "equal_index_overlaps": [
+      {
+        "a": "hat",
+        "b": "head",
+        "overlap_pixels": 8,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "hat",
+        "b": "scarf",
+        "overlap_pixels": 5,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "head",
+        "b": "scarf",
+        "overlap_pixels": 9,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "coat",
+        "overlap_pixels": 11,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "coat",
+        "b": "leg",
+        "overlap_pixels": 21,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "leg",
+        "b": "foot",
+        "overlap_pixels": 9,
+        "differing_palette_indices": 0
+      }
+    ],
+    "coat_split_required": false,
+    "notes": "Complete exact reconstruction succeeds regardless of order for supplied visible pieces because every overlap uses identical palette indices."
+  },
+  "frame9": {
+    "constraints": [],
+    "equal_index_overlaps": [
+      {
+        "a": "hat",
+        "b": "head",
+        "overlap_pixels": 7,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "hat",
+        "b": "scarf",
+        "overlap_pixels": 8,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "head",
+        "b": "scarf",
+        "overlap_pixels": 6,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "L_HA",
+        "overlap_pixels": 1,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "R_HA",
+        "overlap_pixels": 6,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "coat",
+        "overlap_pixels": 8,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "L_HA",
+        "b": "R_HA",
+        "overlap_pixels": 3,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "L_HA",
+        "b": "coat",
+        "overlap_pixels": 3,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "R_HA",
+        "b": "coat",
+        "overlap_pixels": 2,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "coat",
+        "b": "leg",
+        "overlap_pixels": 7,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "leg",
+        "b": "foot",
+        "overlap_pixels": 4,
+        "differing_palette_indices": 0
+      }
+    ],
+    "coat_split_required": false,
+    "notes": "Complete exact reconstruction succeeds regardless of order for supplied visible pieces because all overlapping component pixels agree."
+  },
+  "frame12": {
+    "constraints": [],
+    "coat_split_required": "UNRESOLVED",
+    "notes": "Do not infer indexed z-order from this row; supplied pixels are not source-exact."
+  },
+  "frame17": {
+    "constraints": [
+      "hat above hidden/obscured head",
+      "scarf above hidden/obscured head"
+    ],
+    "coat_split_required": "UNRESOLVED",
+    "notes": "Head entry is intentionally absent, but remaining supplied row is index-divergent so further z-order inference is unsafe."
+  },
+  "frame25": {
+    "constraints": [],
+    "coat_split_required": "UNRESOLVED",
+    "notes": "Front-facing row geometry is useful diagnostically; indexed z-order requires a corrected cut-up."
+  }
+}

@@ -1,0 +1,1151 @@
+{
+  "reconstruction_stats": {
+    "3": {
+      "original_occupied": 537,
+      "reconstruction_occupied": 537,
+      "exact_original_pixels_reproduced": 537,
+      "missing_pixels": 0,
+      "extra_pixels": 0,
+      "palette_index_mismatches": 0,
+      "geometry_source_pixels_covered": 537,
+      "geometry_coverage_percent": 100.0,
+      "geometry_missing": 0,
+      "geometry_extra": 0,
+      "source_index_integrity": "VALID",
+      "components": {
+        "hat": {
+          "status": "PRESENT",
+          "size": [
+            12,
+            7
+          ],
+          "y": 0,
+          "occupied": 42,
+          "source_exact_x_matches": [
+            8
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 8,
+            "exact": 42,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              8
+            ],
+            "occupied": 42
+          },
+          "analysis_anchor_x": 8,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "head": {
+          "status": "PRESENT",
+          "size": [
+            9,
+            7
+          ],
+          "y": 3,
+          "occupied": 40,
+          "source_exact_x_matches": [
+            9
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 9,
+            "exact": 40,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              9
+            ],
+            "occupied": 40
+          },
+          "analysis_anchor_x": 9,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "scarf": {
+          "status": "PRESENT",
+          "size": [
+            18,
+            8
+          ],
+          "y": 4,
+          "occupied": 73,
+          "source_exact_x_matches": [
+            11
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 11,
+            "exact": 73,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              11
+            ],
+            "occupied": 73
+          },
+          "analysis_anchor_x": 11,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "L_HA": {
+          "status": "PRESENT",
+          "size": [
+            5,
+            5
+          ],
+          "y": 14,
+          "occupied": 20,
+          "source_exact_x_matches": [
+            5
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 5,
+            "exact": 20,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              5
+            ],
+            "occupied": 20
+          },
+          "analysis_anchor_x": 5,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "R_HA": {
+          "status": "ABSENT",
+          "reason": "frame3 right-hand entry intentionally blank/obscured"
+        },
+        "coat": {
+          "status": "PRESENT",
+          "size": [
+            15,
+            22
+          ],
+          "y": 8,
+          "occupied": 232,
+          "source_exact_x_matches": [
+            10
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 10,
+            "exact": 232,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              10
+            ],
+            "occupied": 232
+          },
+          "analysis_anchor_x": 10,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "leg": {
+          "status": "PRESENT",
+          "size": [
+            20,
+            17
+          ],
+          "y": 21,
+          "occupied": 134,
+          "source_exact_x_matches": [
+            8
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 8,
+            "exact": 134,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              8
+            ],
+            "occupied": 134
+          },
+          "analysis_anchor_x": 8,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "foot": {
+          "status": "PRESENT",
+          "size": [
+            22,
+            7
+          ],
+          "y": 33,
+          "occupied": 59,
+          "source_exact_x_matches": [
+            6
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 6,
+            "exact": 59,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              6
+            ],
+            "occupied": 59
+          },
+          "analysis_anchor_x": 6,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        }
+      }
+    },
+    "9": {
+      "original_occupied": 484,
+      "reconstruction_occupied": 484,
+      "exact_original_pixels_reproduced": 484,
+      "missing_pixels": 0,
+      "extra_pixels": 0,
+      "palette_index_mismatches": 0,
+      "geometry_source_pixels_covered": 484,
+      "geometry_coverage_percent": 100.0,
+      "geometry_missing": 0,
+      "geometry_extra": 0,
+      "source_index_integrity": "VALID",
+      "components": {
+        "hat": {
+          "status": "PRESENT",
+          "size": [
+            11,
+            9
+          ],
+          "y": 1,
+          "occupied": 50,
+          "source_exact_x_matches": [
+            4
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 4,
+            "exact": 50,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              4
+            ],
+            "occupied": 50
+          },
+          "analysis_anchor_x": 4,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "head": {
+          "status": "PRESENT",
+          "size": [
+            7,
+            7
+          ],
+          "y": 4,
+          "occupied": 33,
+          "source_exact_x_matches": [
+            5
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 5,
+            "exact": 33,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              5
+            ],
+            "occupied": 33
+          },
+          "analysis_anchor_x": 5,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "scarf": {
+          "status": "PRESENT",
+          "size": [
+            16,
+            16
+          ],
+          "y": 1,
+          "occupied": 68,
+          "source_exact_x_matches": [
+            4
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 4,
+            "exact": 68,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              4
+            ],
+            "occupied": 68
+          },
+          "analysis_anchor_x": 4,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "L_HA": {
+          "status": "PRESENT",
+          "size": [
+            4,
+            4
+          ],
+          "y": 16,
+          "occupied": 15,
+          "source_exact_x_matches": [
+            4
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 4,
+            "exact": 15,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              4
+            ],
+            "occupied": 15
+          },
+          "analysis_anchor_x": 4,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "R_HA": {
+          "status": "PRESENT",
+          "size": [
+            7,
+            9
+          ],
+          "y": 9,
+          "occupied": 25,
+          "source_exact_x_matches": [
+            0
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 0,
+            "exact": 25,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              0
+            ],
+            "occupied": 25
+          },
+          "analysis_anchor_x": 0,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "coat": {
+          "status": "PRESENT",
+          "size": [
+            16,
+            21
+          ],
+          "y": 10,
+          "occupied": 195,
+          "source_exact_x_matches": [
+            5
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 5,
+            "exact": 195,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              5
+            ],
+            "occupied": 195
+          },
+          "analysis_anchor_x": 5,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "leg": {
+          "status": "PRESENT",
+          "size": [
+            19,
+            13
+          ],
+          "y": 23,
+          "occupied": 93,
+          "source_exact_x_matches": [
+            3
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 3,
+            "exact": 93,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              3
+            ],
+            "occupied": 93
+          },
+          "analysis_anchor_x": 3,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        },
+        "foot": {
+          "status": "PRESENT",
+          "size": [
+            26,
+            11
+          ],
+          "y": 27,
+          "occupied": 56,
+          "source_exact_x_matches": [
+            0
+          ],
+          "source_match_status": "EXACT_UNIQUE",
+          "diagnostic_same_sheet_all_match": {
+            "x": 0,
+            "exact": 56,
+            "palette_mismatch": 0,
+            "background_mismatch": 0,
+            "ties": [
+              0
+            ],
+            "occupied": 56
+          },
+          "analysis_anchor_x": 0,
+          "anchor_basis": "exact indexed match to CHAR2.bin"
+        }
+      }
+    },
+    "12": {
+      "original_occupied": 518,
+      "reconstruction_occupied": 533,
+      "exact_original_pixels_reproduced": 35,
+      "missing_pixels": 16,
+      "extra_pixels": 31,
+      "palette_index_mismatches": 467,
+      "geometry_source_pixels_covered": 502,
+      "geometry_coverage_percent": 96.91,
+      "geometry_missing": 16,
+      "geometry_extra": 31,
+      "source_index_integrity": "FAILED_FOR_SUPPLIED_ROW",
+      "components": {
+        "hat": {
+          "status": "PRESENT",
+          "size": [
+            11,
+            11
+          ],
+          "y": 1,
+          "occupied": 60,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 8,
+            "exact": 48,
+            "palette_mismatch": 12,
+            "background_mismatch": 0,
+            "ties": [
+              8
+            ],
+            "occupied": 60
+          },
+          "analysis_anchor_x": 8,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "head": {
+          "status": "PRESENT",
+          "size": [
+            8,
+            9
+          ],
+          "y": 3,
+          "occupied": 50,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 9,
+            "exact": 37,
+            "palette_mismatch": 13,
+            "background_mismatch": 0,
+            "ties": [
+              9
+            ],
+            "occupied": 50
+          },
+          "analysis_anchor_x": 9,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "scarf": {
+          "status": "PRESENT",
+          "size": [
+            8,
+            24
+          ],
+          "y": 5,
+          "occupied": 126,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 11,
+            "exact": 116,
+            "palette_mismatch": 10,
+            "background_mismatch": 0,
+            "ties": [
+              11
+            ],
+            "occupied": 126
+          },
+          "analysis_anchor_x": 11,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "L_HA": {
+          "status": "PRESENT",
+          "size": [
+            5,
+            6
+          ],
+          "y": 0,
+          "occupied": 21,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 17,
+            "exact": 19,
+            "palette_mismatch": 2,
+            "background_mismatch": 0,
+            "ties": [
+              17
+            ],
+            "occupied": 21
+          },
+          "analysis_anchor_x": 17,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "R_HA": {
+          "status": "PRESENT",
+          "size": [
+            4,
+            4
+          ],
+          "y": 0,
+          "occupied": 15,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 8,
+            "exact": 11,
+            "palette_mismatch": 4,
+            "background_mismatch": 0,
+            "ties": [
+              8
+            ],
+            "occupied": 15
+          },
+          "analysis_anchor_x": 8,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "coat": {
+          "status": "PRESENT",
+          "size": [
+            12,
+            26
+          ],
+          "y": 3,
+          "occupied": 194,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 15,
+            "exact": 187,
+            "palette_mismatch": 7,
+            "background_mismatch": 0,
+            "ties": [
+              15
+            ],
+            "occupied": 194
+          },
+          "analysis_anchor_x": 15,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "leg": {
+          "status": "PRESENT",
+          "size": [
+            19,
+            15
+          ],
+          "y": 23,
+          "occupied": 141,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 5,
+            "exact": 124,
+            "palette_mismatch": 17,
+            "background_mismatch": 0,
+            "ties": [
+              5
+            ],
+            "occupied": 141
+          },
+          "analysis_anchor_x": 5,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "foot": {
+          "status": "PRESENT",
+          "size": [
+            26,
+            10
+          ],
+          "y": 28,
+          "occupied": 70,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 1,
+            "exact": 65,
+            "palette_mismatch": 5,
+            "background_mismatch": 0,
+            "ties": [
+              1
+            ],
+            "occupied": 70
+          },
+          "analysis_anchor_x": 1,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        }
+      }
+    },
+    "17": {
+      "original_occupied": 555,
+      "reconstruction_occupied": 551,
+      "exact_original_pixels_reproduced": 29,
+      "missing_pixels": 33,
+      "extra_pixels": 29,
+      "palette_index_mismatches": 493,
+      "geometry_source_pixels_covered": 522,
+      "geometry_coverage_percent": 94.05,
+      "geometry_missing": 33,
+      "geometry_extra": 29,
+      "source_index_integrity": "FAILED_FOR_SUPPLIED_ROW",
+      "components": {
+        "hat": {
+          "status": "PRESENT",
+          "size": [
+            11,
+            8
+          ],
+          "y": 0,
+          "occupied": 62,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 11,
+            "exact": 52,
+            "palette_mismatch": 10,
+            "background_mismatch": 0,
+            "ties": [
+              11
+            ],
+            "occupied": 62
+          },
+          "analysis_anchor_x": 11,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "head": {
+          "status": "ABSENT",
+          "reason": "frame17 head intentionally blank/obscured"
+        },
+        "scarf": {
+          "status": "PRESENT",
+          "size": [
+            11,
+            9
+          ],
+          "y": 2,
+          "occupied": 65,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 11,
+            "exact": 49,
+            "palette_mismatch": 16,
+            "background_mismatch": 0,
+            "ties": [
+              11
+            ],
+            "occupied": 65
+          },
+          "analysis_anchor_x": 11,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "L_HA": {
+          "status": "PRESENT",
+          "size": [
+            5,
+            6
+          ],
+          "y": 0,
+          "occupied": 22,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 7,
+            "exact": 19,
+            "palette_mismatch": 3,
+            "background_mismatch": 0,
+            "ties": [
+              7
+            ],
+            "occupied": 22
+          },
+          "analysis_anchor_x": 7,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "R_HA": {
+          "status": "PRESENT",
+          "size": [
+            5,
+            6
+          ],
+          "y": 0,
+          "occupied": 21,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 21,
+            "exact": 18,
+            "palette_mismatch": 3,
+            "background_mismatch": 0,
+            "ties": [
+              21
+            ],
+            "occupied": 21
+          },
+          "analysis_anchor_x": 21,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "coat": {
+          "status": "PRESENT",
+          "size": [
+            17,
+            32
+          ],
+          "y": 3,
+          "occupied": 374,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 8,
+            "exact": 352,
+            "palette_mismatch": 22,
+            "background_mismatch": 0,
+            "ties": [
+              8
+            ],
+            "occupied": 374
+          },
+          "analysis_anchor_x": 8,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "leg": {
+          "status": "PRESENT",
+          "size": [
+            19,
+            17
+          ],
+          "y": 18,
+          "occupied": 49,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 7,
+            "exact": 41,
+            "palette_mismatch": 8,
+            "background_mismatch": 0,
+            "ties": [
+              7
+            ],
+            "occupied": 49
+          },
+          "analysis_anchor_x": 7,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "foot": {
+          "status": "PRESENT",
+          "size": [
+            21,
+            11
+          ],
+          "y": 26,
+          "occupied": 47,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 6,
+            "exact": 39,
+            "palette_mismatch": 8,
+            "background_mismatch": 0,
+            "ties": [
+              6
+            ],
+            "occupied": 47
+          },
+          "analysis_anchor_x": 6,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        }
+      }
+    },
+    "25": {
+      "original_occupied": 510,
+      "reconstruction_occupied": 507,
+      "exact_original_pixels_reproduced": 50,
+      "missing_pixels": 15,
+      "extra_pixels": 12,
+      "palette_index_mismatches": 445,
+      "geometry_source_pixels_covered": 495,
+      "geometry_coverage_percent": 97.06,
+      "geometry_missing": 15,
+      "geometry_extra": 12,
+      "source_index_integrity": "FAILED_FOR_SUPPLIED_ROW",
+      "components": {
+        "hat": {
+          "status": "PRESENT",
+          "size": [
+            13,
+            6
+          ],
+          "y": 1,
+          "occupied": 46,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 9,
+            "exact": 41,
+            "palette_mismatch": 5,
+            "background_mismatch": 0,
+            "ties": [
+              9
+            ],
+            "occupied": 46
+          },
+          "analysis_anchor_x": 9,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "head": {
+          "status": "PRESENT",
+          "size": [
+            9,
+            9
+          ],
+          "y": 3,
+          "occupied": 62,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 11,
+            "exact": 45,
+            "palette_mismatch": 17,
+            "background_mismatch": 0,
+            "ties": [
+              11
+            ],
+            "occupied": 62
+          },
+          "analysis_anchor_x": 11,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "scarf": {
+          "status": "PRESENT",
+          "size": [
+            11,
+            20
+          ],
+          "y": 9,
+          "occupied": 125,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 9,
+            "exact": 111,
+            "palette_mismatch": 14,
+            "background_mismatch": 0,
+            "ties": [
+              9
+            ],
+            "occupied": 125
+          },
+          "analysis_anchor_x": 9,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "L_HA": {
+          "status": "PRESENT",
+          "size": [
+            2,
+            7
+          ],
+          "y": 21,
+          "occupied": 11,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 21,
+            "exact": 10,
+            "palette_mismatch": 1,
+            "background_mismatch": 0,
+            "ties": [
+              21
+            ],
+            "occupied": 11
+          },
+          "analysis_anchor_x": 21,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "R_HA": {
+          "status": "PRESENT",
+          "size": [
+            4,
+            6
+          ],
+          "y": 18,
+          "occupied": 18,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 7,
+            "exact": 12,
+            "palette_mismatch": 6,
+            "background_mismatch": 0,
+            "ties": [
+              7
+            ],
+            "occupied": 18
+          },
+          "analysis_anchor_x": 7,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "coat": {
+          "status": "PRESENT",
+          "size": [
+            17,
+            20
+          ],
+          "y": 9,
+          "occupied": 141,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 7,
+            "exact": 130,
+            "palette_mismatch": 11,
+            "background_mismatch": 0,
+            "ties": [
+              7
+            ],
+            "occupied": 141
+          },
+          "analysis_anchor_x": 7,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "leg": {
+          "status": "PRESENT",
+          "size": [
+            13,
+            18
+          ],
+          "y": 22,
+          "occupied": 164,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 9,
+            "exact": 144,
+            "palette_mismatch": 20,
+            "background_mismatch": 0,
+            "ties": [
+              9
+            ],
+            "occupied": 164
+          },
+          "analysis_anchor_x": 9,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        },
+        "foot": {
+          "status": "PRESENT",
+          "size": [
+            19,
+            5
+          ],
+          "y": 35,
+          "occupied": 48,
+          "source_exact_x_matches": [],
+          "source_match_status": "NO_EXACT_MATCH",
+          "diagnostic_same_sheet_all_match": {
+            "x": 6,
+            "exact": 40,
+            "palette_mismatch": 8,
+            "background_mismatch": 0,
+            "ties": [
+              6
+            ],
+            "occupied": 48
+          },
+          "analysis_anchor_x": 6,
+          "anchor_basis": "same-sheet ALL correspondence only; source index integrity failed"
+        }
+      }
+    }
+  },
+  "all_column_integrity": {
+    "3": {
+      "all_sheet_x_offset_vs_source": 7,
+      "source_occupied": 537,
+      "sheet_all_occupied": 537,
+      "exact_occupied": 537,
+      "missing": 0,
+      "extra": 0,
+      "palette_mismatch": 0,
+      "geometry_iou": 1.0
+    },
+    "9": {
+      "all_sheet_x_offset_vs_source": 15,
+      "source_occupied": 484,
+      "sheet_all_occupied": 484,
+      "exact_occupied": 484,
+      "missing": 0,
+      "extra": 0,
+      "palette_mismatch": 0,
+      "geometry_iou": 1.0
+    },
+    "12": {
+      "all_sheet_x_offset_vs_source": 5,
+      "source_occupied": 518,
+      "sheet_all_occupied": 536,
+      "exact_occupied": 35,
+      "missing": 14,
+      "extra": 32,
+      "palette_mismatch": 469,
+      "geometry_iou": 0.916364
+    },
+    "17": {
+      "all_sheet_x_offset_vs_source": 1,
+      "source_occupied": 555,
+      "sheet_all_occupied": 551,
+      "exact_occupied": 29,
+      "missing": 33,
+      "extra": 29,
+      "palette_mismatch": 493,
+      "geometry_iou": 0.893836
+    },
+    "25": {
+      "all_sheet_x_offset_vs_source": -2,
+      "source_occupied": 510,
+      "sheet_all_occupied": 517,
+      "exact_occupied": 51,
+      "missing": 6,
+      "extra": 13,
+      "palette_mismatch": 453,
+      "geometry_iou": 0.963671
+    }
+  },
+  "pairwise_overlap": {
+    "3": [
+      {
+        "a": "hat",
+        "b": "head",
+        "overlap_pixels": 8,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "hat",
+        "b": "scarf",
+        "overlap_pixels": 5,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "head",
+        "b": "scarf",
+        "overlap_pixels": 9,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "coat",
+        "overlap_pixels": 11,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "coat",
+        "b": "leg",
+        "overlap_pixels": 21,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "leg",
+        "b": "foot",
+        "overlap_pixels": 9,
+        "differing_palette_indices": 0
+      }
+    ],
+    "9": [
+      {
+        "a": "hat",
+        "b": "head",
+        "overlap_pixels": 7,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "hat",
+        "b": "scarf",
+        "overlap_pixels": 8,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "head",
+        "b": "scarf",
+        "overlap_pixels": 6,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "L_HA",
+        "overlap_pixels": 1,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "R_HA",
+        "overlap_pixels": 6,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "scarf",
+        "b": "coat",
+        "overlap_pixels": 8,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "L_HA",
+        "b": "R_HA",
+        "overlap_pixels": 3,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "L_HA",
+        "b": "coat",
+        "overlap_pixels": 3,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "R_HA",
+        "b": "coat",
+        "overlap_pixels": 2,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "coat",
+        "b": "leg",
+        "overlap_pixels": 7,
+        "differing_palette_indices": 0
+      },
+      {
+        "a": "leg",
+        "b": "foot",
+        "overlap_pixels": 4,
+        "differing_palette_indices": 0
+      }
+    ]
+  }
+}
